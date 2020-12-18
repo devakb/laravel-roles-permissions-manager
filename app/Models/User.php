@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,19 @@ class User extends Authenticatable
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+
+
+    public static function boot(){
+        parent::boot();
+
+        static::created(function(Model $model){
+            if($model->role_id == ""){
+                $model->update([
+                    'role_id' => Role::where('title','user')->first()->id,
+                ]);
+            }
+        });
+
     }
 }

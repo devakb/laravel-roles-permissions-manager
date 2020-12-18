@@ -22,11 +22,11 @@ Auth::routes();
 
 
 
-Route::group(['prefix'=>"admin",'as' => 'admin.','middleware' => ['auth']], function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix'=>"admin",'as' => 'admin.','namespace' => 'App\Http\Controllers\Admin','middleware' => ['auth']], function () {
+    Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('/users', App\Http\Controllers\UserController::class);
-    Route::resource('/roles', App\Http\Controllers\UserController::class);
+    Route::resource('/users', 'UserController');
+    Route::resource('/roles', 'RoleController');
 });
 
 
