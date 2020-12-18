@@ -62,6 +62,11 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+
+                                @if (Route::has('register'))
+                                    <br><br>
+                                    Don't have an Account ?<a href="{{ route('register') }}" class="btn btn-link">{{ __('Register') }}</a>
+                                @endif
                             </div>
                         </div>
                     </form>
