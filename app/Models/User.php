@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
 
 
-    public static function boot(){
+    static function boot(){
         parent::boot();
 
         static::created(function(Model $model){

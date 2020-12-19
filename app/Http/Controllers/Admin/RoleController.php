@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
+use App\Models\Permission;
+use App\Models\Role;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Response;
 
 class RoleController extends Controller
 {
@@ -14,7 +20,11 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        abort_if(Gate::denies('roles_access'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        $roles = Role::with('permissions')->paginate(5);
+
+        return view('admin.roles.index',compact('roles'));
     }
 
     /**
@@ -24,7 +34,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        $permissions = Permission::all()->pluck('name', 'id');
+
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -33,21 +46,14 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
-        //
+        $role = Role::create($request->validated());
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.index')->with('status-success','New Role Created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +61,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        $permissions = Permission::all()->pluck('name', 'id');
+
+        return view('admin.roles.edit', compact('role','permissions'));
     }
 
     /**
@@ -67,9 +76,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
-        //
+        $role->update($request->validated());
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.index')->with('status-success','Role Updated');
     }
 
     /**
@@ -78,8 +90,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        return redirect()->back()->with(['status-success' => "Role Deleted"]);
     }
 }

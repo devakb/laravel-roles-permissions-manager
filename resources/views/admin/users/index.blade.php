@@ -29,7 +29,7 @@
                             <td class="text-center">{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->role->title}}</td>
+                            <td>{{$user->role->title ?? "--"}}</td>
                             <td>
                                     @can('user_edit')
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>

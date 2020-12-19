@@ -24,6 +24,10 @@ class AuthGates
 
             $role = Role::with('permissions')->where('id', $role_id)->first();
 
+            if(!$role){
+                abort(403);
+            }
+
             $permissions = $role->permissions->pluck('name');
 
             foreach($permissions as $permission){

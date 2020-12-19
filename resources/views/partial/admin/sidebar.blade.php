@@ -13,7 +13,7 @@
                         @can('admin_panel_access')
                         <!-- dashboard-->
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(request()->is('/')) active @endif" href="{{ route('admin.home') }}" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark  @if(request()->is('admin')) is_active @endif" href="{{ route('admin.home') }}" aria-expanded="false">
                                 <i class="mr-3 fas fa-tachometer-alt fa-fw" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
@@ -22,17 +22,31 @@
 
 
 
-                        <li class="sidebar-item selected">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                        <li class="sidebar-item">
+
+                            <a class="sidebar-link has-arrow waves-effect waves-dark selected" href="javascript:void(0)" aria-expanded="false">
+
                                 <i class="mr-3 mdi mdi-account" aria-hidden="true"></i>
                                 <span class="hide-menu">Users Management</span>
                             </a>
-                            <ul aria-expanded="false" class="collapse first-level">
+                            <ul aria-expanded="false" class="collapse first-level
+                                @if(request()->is('admin/users') || request()->is('admin/users/*')) in @endif
+                                @if(request()->is('admin/roles') || request()->is('admin/roles/*')) in @endif
+                            ">
                                 @can('users_access')
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link waves-effect waves-dark sidebar-link @if(request()->is('admin/users') || request()->is('admin/users/*')) active @endif" href="{{ route('admin.users.index') }}" aria-expanded="false">
+                                        <a class="sidebar-link waves-effect waves-dark  @if(request()->is('admin/users') || request()->is('admin/users/*')) is_active @endif" href="{{ route('admin.users.index') }}" aria-expanded="false">
                                             <i class="mr-3 mdi mdi-account-multiple" aria-hidden="true"></i>
                                             <span class="hide-menu">Users</span>
+                                        </a>
+                                    </li>
+                                @endcan
+
+                                @can('roles_access')
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link waves-effect waves-dark  @if(request()->is('admin/roles') || request()->is('admin/roles/*')) is_active @endif" href="{{ route('admin.roles.index') }}" aria-expanded="false">
+                                            <i class="mr-3 mdi mdi-star" aria-hidden="false"></i>
+                                            <span class="hide-menu">Roles</span>
                                         </a>
                                     </li>
                                 @endcan
