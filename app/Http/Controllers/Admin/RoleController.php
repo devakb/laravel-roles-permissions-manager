@@ -18,11 +18,11 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('roles_access'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        $roles = Role::with('permissions')->paginate(5);
+        $roles = Role::with('permissions')->paginate(5)->appends($request->query());;
 
         return view('admin.roles.index',compact('roles'));
     }
@@ -52,6 +52,20 @@ class RoleController extends Controller
         $role->permissions()->sync($request->permissions);
 
         return redirect()->route('admin.roles.index')->with('status-success','New Role Created');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Role  $permission
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Role $role)
+    {
+        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        return view('admin.roles.show',compact('role'));
     }
 
 

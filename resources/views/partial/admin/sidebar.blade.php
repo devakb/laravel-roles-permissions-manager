@@ -21,7 +21,7 @@
                         @endcan
 
 
-
+                    @canany(['users_access','roles_access','permissions_access'])
                         <li class="sidebar-item">
 
                             <a class="sidebar-link has-arrow waves-effect waves-dark selected" href="javascript:void(0)" aria-expanded="false">
@@ -32,6 +32,7 @@
                             <ul aria-expanded="false" class="collapse first-level
                                 @if(request()->is('admin/users') || request()->is('admin/users/*')) in @endif
                                 @if(request()->is('admin/roles') || request()->is('admin/roles/*')) in @endif
+                                @if(request()->is('admin/permissions') || request()->is('admin/permissions/*')) in @endif
                             ">
                                 @can('users_access')
                                     <li class="sidebar-item">
@@ -50,8 +51,18 @@
                                         </a>
                                     </li>
                                 @endcan
+
+                                @can('permissions_access')
+                                    <li class="sidebar-item">
+                                        <a class="sidebar-link waves-effect waves-dark  @if(request()->is('admin/permissions') || request()->is('admin/permissions/*')) is_active @endif" href="{{ route('admin.permissions.index') }}" aria-expanded="false">
+                                            <i class="mr-3 mdi mdi-key" aria-hidden="false"></i>
+                                            <span class="hide-menu">Permissions</span>
+                                        </a>
+                                    </li>
+                                @endcan
                             </ul>
                         </li>
+                    @endcanany
 
                         {{-- <li class="sidebar-item selected"> <a class="sidebar-link has-arrow waves-effect waves-dark active" href="javascript:void(0)" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home feather-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="hide-menu">Dashboard <span class="badge badge-pill badge-success">5</span></span></a>
                             <ul aria-expanded="false" class="collapse first-level in">

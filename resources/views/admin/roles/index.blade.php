@@ -12,14 +12,13 @@
 
             <br /><br />
 
-            @can('roles_access')
+
 
                 <table class="table table-borderless table-hover">
                             <tr class="bg-info text-light">
                                 <th class="text-center">ID</th>
                                 <th>Title</th>
                                 <th>Short Code</th>
-                                <th>Permissions</th>
                                 <th>
                                     &nbsp;
                                 </th>
@@ -30,11 +29,9 @@
                             <td>{{$role->title}}</td>
                             <td>{{$role->short_code ?? '--'}}</td>
                             <td>
-                                 @foreach ($role->permissions as $permission)
-                                     <div class="badge badge-info">{{ $permission->name }}</div>
-                                 @endforeach
-                            </td>
-                            <td>
+                                    @can('role_show')
+                                        <a href="{{ route('admin.roles.show', $role->id) }}" class="btn btn-sm btn-success">View</a>
+                                    @endcan
                                     @can('role_edit')
                                         <a href="{{ route('admin.roles.edit', $role->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                     @endcan
@@ -49,12 +46,12 @@
                         </tr>
                         @empty
                             <tr>
-                                <td colspan="5">No Roles Found .....</td>
+                                <td colspan="100%" class="text-center text-muted py-3">No Roles Found</td>
                             </tr>
                     @endforelse
                 </table>
 
-            @endcan
+
 
 
             @if($roles->total() > $roles->perPage())

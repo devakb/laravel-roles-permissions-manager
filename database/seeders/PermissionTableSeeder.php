@@ -87,9 +87,7 @@ class PermissionTableSeeder extends Seeder
                 'name' => 'permission_create',
             ],
 
-            [
-                'name' => 'permission_show',
-            ],
+
 
 
         ];

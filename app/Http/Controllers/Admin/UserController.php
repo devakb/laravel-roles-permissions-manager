@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserPhotoRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -52,6 +55,20 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with(['status-success' => "New User Created"]);
     }
 
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $permission
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        return view('admin.users.show',compact('user'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -66,6 +83,13 @@ class UserController extends Controller
         return view('admin.users.edit',compact('user','roles'));
     }
 
+
+    public function editPhoto(User $user){
+        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
+
+        return view('admin.users.photo',compact('user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -77,6 +101,21 @@ class UserController extends Controller
     {
         $user->update(array_filter($request->validated()));
         return redirect()->route('admin.users.index')->with(['status-success' => "User Updated"]);
+    }
+
+    public function updatePhoto(UpdateUserPhotoRequest $request, User $user){
+
+       $filename = Str::uuid().".".$request->photo->getClientOriginalExtension();
+       $filepath = "users".DIRECTORY_SEPARATOR.$user->id.DIRECTORY_SEPARATOR."photos";
+
+       if(file_exists($user->photo ?? "")){
+           unlink($user->photo);
+       }
+
+       $request->photo->move(storage_path().DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."public".DIRECTORY_SEPARATOR.$filepath, $filename);
+       $user->update(['photo' => Storage::url($filepath.DIRECTORY_SEPARATOR.$filename)]);
+
+       return redirect()->route('admin.users.show',[$user->id]);
     }
 
     /**

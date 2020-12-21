@@ -13,9 +13,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="{{ asset('admin_assets/css/style.min.css') }}" rel="stylesheet">
-
+    <!-- slim select -->
     <link rel="stylesheet" href="{{ asset('admin_assets/plugins/slim-select/slimselect.min.css') }}">
-    <script src="{{ asset('admin_assets/plugins/slim-select/slimselect.min.js') }}"></script>
+    <!-- Dropify -->
+    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/dropify/dropify.min.css') }}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -109,9 +111,16 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"><img src="{{ asset('admin_assets/images/users/1.jpg') }}"
-                                    alt="user" class="profile-pic mr-2">Markarn
-                                Doe</a>
+                                aria-haspopup="true" aria-expanded="false">
+                                    {{-- <img src="{{ asset('admin_assets/images/users/1.jpg') }}" alt="user" class="profile-pic mr-2"> --}}
+                                    {{ Auth()->user()->name }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                               <a href="javascript:void(0)" onclick="$('#logout-form').submit();" class="dropdown-item">
+                                    <i class="fa fa-sign-out-alt mr-3"></i>
+                                    Logout
+                               </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -157,6 +166,10 @@
 
                 @yield('content')
 
+                <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                    @csrf
+                </form>
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -197,6 +210,14 @@
     <script src="{{ asset('admin_assets/plugins/flot/jquery.flot.js') }}"></script>
     <script src="{{ asset('admin_assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
     <script src="{{ asset('admin_assets/js/pages/dashboards/dashboard1.js') }}"></script>
+
+    <!-- slim-select -->
+    <script src="{{ asset('admin_assets/plugins/slim-select/slimselect.min.js') }}"></script>
+
+    <!-- Dropify -->
+    <script src="{{ asset('admin_assets/plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/dropify/dropify-fileupload.init.js') }}"></script>
+
     @yield('scripts')
 </body>
 
