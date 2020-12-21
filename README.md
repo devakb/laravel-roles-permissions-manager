@@ -70,7 +70,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---------- Composer Install ( <a href="https://getcomposer.org/">Download</a> & Install Composer First )<br><br>
 ---------- php artisan key:generate <br><br>
 ---------- php artisan migrate --seed <br><br>
-
 ---------- php artisan serve <br><br>
 
 <b>Goto The Browser url & type : <i>Localhost:8000</i> </b> 
