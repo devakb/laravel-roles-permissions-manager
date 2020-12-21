@@ -15,8 +15,6 @@
     <link href="{{ asset('admin_assets/css/style.min.css') }}" rel="stylesheet">
     <!-- slim select -->
     <link rel="stylesheet" href="{{ asset('admin_assets/plugins/slim-select/slimselect.min.css') }}">
-    <!-- Dropify -->
-    <link rel="stylesheet" href="{{ asset('admin_assets/plugins/dropify/dropify.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -95,10 +93,7 @@
                         <!-- ============================================================== -->
 
                         <li class="nav-item hidden-sm-down">
-                            <form class="app-search pl-3">
-                                <input type="text" class="form-control" placeholder="Search for..."> <a
-                                    class="srh-btn"><i class="ti-search"></i></a>
-                            </form>
+
                         </li>
                     </ul>
 
@@ -214,9 +209,6 @@
     <!-- slim-select -->
     <script src="{{ asset('admin_assets/plugins/slim-select/slimselect.min.js') }}"></script>
 
-    <!-- Dropify -->
-    <script src="{{ asset('admin_assets/plugins/dropify/dropify.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/plugins/dropify/dropify-fileupload.init.js') }}"></script>
 
     @yield('scripts')
 </body>
