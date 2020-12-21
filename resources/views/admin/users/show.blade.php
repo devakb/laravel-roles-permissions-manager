@@ -16,10 +16,6 @@
                 <table class="table table-borderless">
 
                     <tr>
-                        <th>Photo</th>
-                        <td><img src="{{ $user->photo ?? "admin_assets/images/no_user_photo.png" }}" width="50px" alt={{ $user->name }}></td>
-                    </tr>
-                    <tr>
                         <th>ID</th>
                         <td>{{ $user->id }}</td>
                     </tr>

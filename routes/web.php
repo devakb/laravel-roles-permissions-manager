@@ -27,10 +27,6 @@ Route::group(['prefix'=>"admin",'as' => 'admin.','namespace' => 'App\Http\Contro
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('/users', 'UserController');
-    Route::get('/users/{user}/photo', 'UserController@editPhoto')->name('users.photo.edit');
-    Route::put('/users/{user}/photo', 'UserController@updatePhoto')->name('users.photo.update');
-    Route::delete('/users/{user}/photo', 'UserController@deletePhoto')->name('users.photo.delete');
-
     Route::resource('/roles', 'RoleController');
     Route::resource('/permissions', 'PermissionController')->except(['show']);
 

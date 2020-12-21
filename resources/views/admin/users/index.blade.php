@@ -17,7 +17,6 @@
                 <table class="table table-borderless table-hover">
                             <tr class="bg-info text-light">
                                 <th class="text-center">ID</th>
-                                <th class="text-center">Photo</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -28,7 +27,6 @@
                     @forelse ($users as $user)
                         <tr>
                             <td class="text-center">{{$user->id}}</td>
-                            <td class="text-center"><img src="{{ $user->photo ?? "admin_assets/images/no_user_photo.png" }}" width="50px" alt={{ $user->name }}></td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->role->title ?? "--"}}</td>

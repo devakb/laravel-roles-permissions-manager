@@ -84,12 +84,6 @@ class UserController extends Controller
     }
 
 
-    public function editPhoto(User $user){
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
-        return view('admin.users.photo',compact('user'));
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -103,20 +97,6 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with(['status-success' => "User Updated"]);
     }
 
-    public function updatePhoto(UpdateUserPhotoRequest $request, User $user){
-
-       $filename = Str::uuid().".".$request->photo->getClientOriginalExtension();
-       $filepath = "users".DIRECTORY_SEPARATOR.$user->id.DIRECTORY_SEPARATOR."photos";
-
-       if(file_exists($user->photo ?? "")){
-           unlink($user->photo);
-       }
-
-       $request->photo->move(storage_path().DIRECTORY_SEPARATOR."App".DIRECTORY_SEPARATOR."public".DIRECTORY_SEPARATOR.$filepath, $filename);
-       $user->update(['photo' => Storage::url($filepath.DIRECTORY_SEPARATOR.$filename)]);
-
-       return redirect()->route('admin.users.show',[$user->id]);
-    }
 
     /**
      * Remove the specified resource from storage.
