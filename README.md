@@ -67,9 +67,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---- copy and rename .env.example to .env <br />
 ---- Update Datebase Credentials on .env file <br />
 ---- <b>Run Bellow Commands</b> <br />
----------- Composer Install <br>
+---------- Composer Install ( <a href="https://getcomposer.org/">Download</a> & Install Composer First )<br>
 ---------- php artisan key:generate <br>
 ---------- php artisan migrate --seed <br>
+
+---------- php artisan serve <br>
+<br>
+<b>Goto The Browser url & type : <i>Localhost:8000</i> </b> 
 
 <b>Your will be get admin email & password from seeder file</b> <br>
 --- <root-project> / database / seeders / UsersTableSeeder.php <br>
