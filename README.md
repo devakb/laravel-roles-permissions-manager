@@ -76,7 +76,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 <b>Goto The Browser url & type : <i>Localhost:8000</i> </b> 
 
 <b>Your will be get admin email & password from seeder file</b> <br>
---- <root-project> / database / seeders / UsersTableSeeder.php <br>
+--- &lt;root-project&gt; / database / seeders / UsersTableSeeder.php <br>
 
 ## Credit
 
