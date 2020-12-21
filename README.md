@@ -65,9 +65,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Credit
 
-Author : Amit Kumar Biswas
-Template : https://www.wrappixel.com/  
-Template Link : https://www.wrappixel.com/templates/monsteradmin/
-Development : Amit Kumar Biswas
+<p><b>Author : </b> Amit Kumar Biswas</p>
+<p><b>Template : </b> <a href="https://www.wrappixel.com/">https://www.wrappixel.com/</a> </p> 
+<p><b>Template Link : </b> <a href="https://www.wrappixel.com/templates/monsteradmin/">https://www.wrappixel.com/templates/monsteradmin/</a></p>
+<p><b>Development : </b> Amit Kumar Biswas</p>
 
 
