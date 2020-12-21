@@ -61,7 +61,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## Installation
 
+---- Download Repository <br />
+---- copy and rename .env.example to .env <br />
+---- Update Datebase Credentials on .env file <br />
+---- Run Bellow Commands <br />
+---------- Composer Install <br>
+---------- php artisan key:generate <br>
+---------- php artisan migrate --seed <br>
+
+<b>Your will be get admin email & password from seeder file</b> <br>
+--- <root-project> / database / seeders / UsersTableSeeder.php <br>
 
 ## Credit
 
@@ -69,5 +80,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 <p><b>Template : </b> <a href="https://www.wrappixel.com/">https://www.wrappixel.com/</a> </p> 
 <p><b>Template Link : </b> <a href="https://www.wrappixel.com/templates/monsteradmin/">https://www.wrappixel.com/templates/monsteradmin/</a></p>
 <p><b>Development : </b> Amit Kumar Biswas</p>
+<br><br>
+Thanks For Downloading
 
 
