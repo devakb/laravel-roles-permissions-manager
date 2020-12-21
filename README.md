@@ -66,7 +66,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---- Download Repository <br />
 ---- copy and rename .env.example to .env <br />
 ---- Update Datebase Credentials on .env file <br />
----- Run Bellow Commands <br />
+---- <b>Run Bellow Commands</b> <br />
 ---------- Composer Install <br>
 ---------- php artisan key:generate <br>
 ---------- php artisan migrate --seed <br>
