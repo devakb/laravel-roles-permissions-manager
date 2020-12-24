@@ -22,20 +22,19 @@
 
 [MIT license](https://opensource.org/licenses/MIT).
 
-## Installation
+## Usage
+This is not a package - it's a full Laravel project that you should use as a starter boilerplate, and then add your own custom functionality.
 
----- Download Repository <br /><br>
----- copy and rename .env.example to .env <br /><br>
----- Update Datebase Credentials on .env file <br /><br>
----- <b>Run Bellow Commands</b> <br /><br>
----------- Composer Install ( <a href="https://getcomposer.org/">Download</a> & Install Composer First )<br><br>
----------- php artisan key:generate <br><br>
----------- php artisan migrate --seed <br><br>
----------- php artisan serve <br><br>
+<ul>
+    <li>Clone the repository with <code>git clone</code></li>
+    <li>Copy <code>.env.example</code> file to <code>.env</code> and edit database credentials there</li>
+    <li>Run <code>composer install</code></li>
+    <li>Run <code>php artisan key:generate</code></li>
+</ul>
 
-<b>Goto The Browser url & type : <i>Localhost:8000</i> </b> 
+With that user you can create more roles/permissions/users, and then use them in your code, by using functionality like Gate or @can, as in default Laravel.
 
-<b>Your will be get admin email & password from seeder file</b> <br>
+<b>Your will be get Login Credentials from seeder file</b> <br>
 --- &lt;root-project&gt; / database / seeders / UsersTableSeeder.php <br>
 
 ## Credit
