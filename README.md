@@ -1,5 +1,22 @@
-<h3>Laravel Rroles Permissions Manager</h3>
+## Laravel Rroles Permissions Manager
 <h5>Laravel Version : 8</h5>
+<hr />
+<h4>Previews</h4>
+
+<h6>Preview 1</h6>
+<p>
+    <img src="https://github.com/amitkumarbiswas2001/my-github-images/blob/main/laravel-roles-permissions-manager/80e570b2-e396-42bd-ac86-d55f2fe5176d.PNG"/>
+</p>
+<h6>Preview 2</h6>
+<p>
+    <img src="https://github.com/amitkumarbiswas2001/my-github-images/blob/main/laravel-roles-permissions-manager/98580690-3a76-46b4-8a64-83e7e9534e05.PNG"/>
+</p>
+<h6>Preview 3</h6>
+<p>
+    <img src="https://github.com/amitkumarbiswas2001/my-github-images/blob/main/laravel-roles-permissions-manager/ed31028c-86a0-4266-a641-d17a577de6f1.PNG"/>
+</p>
+
+
 
 ## License
 
