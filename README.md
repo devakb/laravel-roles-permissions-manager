@@ -1,4 +1,4 @@
-## Laravel Rroles Permissions Manager
+## Laravel Roles Permissions Manager
 <h5>Laravel Version : 8</h5>
 <hr />
 <h4>Previews</h4>
